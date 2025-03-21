@@ -18,4 +18,20 @@ public class TaskRepository : ITaskRepository
         await _context.SaveChangesAsync();
         return task;
     }
+
+    public async Task<TaskModel> UpdateTaskAsync(TaskModel task)
+    {
+        var existingTask = await _context.Tb_Tasks.FindAsync(task.Id);
+        if (existingTask == null)
+        {
+            return null;
+        }
+        
+        existingTask.Titulo = task.Titulo;
+        existingTask.Status = task.Status;
+        existingTask.Descricao = task.Descricao;
+        
+        await _context.SaveChangesAsync();
+        return existingTask;
+    }
 }
