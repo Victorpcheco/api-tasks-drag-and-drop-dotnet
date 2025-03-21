@@ -40,5 +40,10 @@ public class TaskService : ITaskService
 
         return await _repository.UpdateTaskAsync(task);
     }
+
+    public async Task<IEnumerable<TaskModel>> GetAllTaskAsync()
+    {
+        return await _repository.GetAllTaskAsync();
+    }
     
 }

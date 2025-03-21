@@ -1,5 +1,6 @@
 using Api.Data;
 using Api.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api.Repository;
 
@@ -34,4 +35,10 @@ public class TaskRepository : ITaskRepository
         await _context.SaveChangesAsync();
         return existingTask;
     }
+
+    public async Task<IEnumerable<TaskModel>> GetAllTaskAsync()
+    {
+        return await _context.Tb_Tasks.ToListAsync();
+    }
+    
 }

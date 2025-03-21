@@ -6,4 +6,5 @@ public interface ITaskRepository
 {
     Task<TaskModel> AddTaskAsync(TaskModel task); 
     Task<TaskModel> UpdateTaskAsync(TaskModel task);
+    Task<IEnumerable<TaskModel>> GetAllTaskAsync();
 }
