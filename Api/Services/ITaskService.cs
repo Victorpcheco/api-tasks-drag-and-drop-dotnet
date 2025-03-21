@@ -5,7 +5,9 @@ namespace Api.Services;
 public interface ITaskService
 {
     Task<TaskModel> CreateTaskAsync(TaskModel task);
+    // ? = valor url 
     Task<TaskModel?> UpdateTaskAsync(TaskModel task);
     Task <IEnumerable<TaskModel>> GetAllTaskAsync();
-    // porque da interrogação? 
+    Task<bool> DeleteTaskAsync(int id);
+    
 }
