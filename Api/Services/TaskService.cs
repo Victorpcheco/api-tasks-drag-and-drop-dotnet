@@ -1,5 +1,6 @@
 using Api.Models;
 using Api.Repository;
+using Api.Validators;
 using FluentValidation;
 
 namespace Api.Services;
@@ -25,6 +26,19 @@ public class TaskService : ITaskService
             throw new ValidationException(validationResult.Errors); 
         }
         return await _repository.AddTaskAsync(task);
+    }
+
+    public async Task<TaskModel?> UpdateTaskAsync(TaskModel task)
+    {
+        var validator = new TaskModelValidator();
+        var validationResult = validator.Validate(task);
+    
+        if (!validationResult.IsValid)
+        {
+            throw new ValidationException(validationResult.Errors);
+        }
+
+        return await _repository.UpdateTaskAsync(task);
     }
     
 }
