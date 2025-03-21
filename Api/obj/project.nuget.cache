@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "BTignFSrIVk=",
+  "dgSpecHash": "jML53EQhjsM=",
   "success": true,
   "projectFilePath": "C:\\Projects\\dotnet\\ApiTasks\\Api\\Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\victo\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.14\\microsoft.aspnetcore.openapi.8.0.14.nupkg.sha512",
     "C:\\Users\\victo\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
