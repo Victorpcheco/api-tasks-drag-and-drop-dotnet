@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/tasks")]
 [ApiController]
 public class TaskController : ControllerBase
 {
@@ -32,7 +32,7 @@ public class TaskController : ControllerBase
         }
     }
 
-    [HttpPost("update")]
+    [HttpPut("{id}")]
     public async Task<IActionResult> UpdateTaskAsync(int id, [FromBody] TaskModel task)
     {
 
@@ -52,5 +52,17 @@ public class TaskController : ControllerBase
         {
             return BadRequest(exception.Errors.Select(exception => exception.ErrorMessage));
         }
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<TaskModel>>> GetAllTasks()
+    {
+        var tasks = await _service.GetAllTaskAsync();
+
+        if (tasks == null || !tasks.Any())
+        {
+            return NotFound("Nenhuma tarefa encontrada!");
+        }
+        return Ok(tasks);
     }
 }
