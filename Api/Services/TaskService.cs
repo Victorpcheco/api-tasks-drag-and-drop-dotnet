@@ -45,5 +45,16 @@ public class TaskService : ITaskService
     {
         return await _repository.GetAllTaskAsync();
     }
+
+    public async Task<bool> DeleteTaskAsync(int id)
+    {
+        var task = await _repository.GetTaskByIdAsync(id);
+        if (task == null)
+        {
+            return false;
+        }
+        await _repository.DeleteTaskAsync(task);
+        return true;
+    }
     
 }

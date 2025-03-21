@@ -65,4 +65,15 @@ public class TaskController : ControllerBase
         }
         return Ok(tasks);
     }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteTask(int id)
+    {
+        var deletedTask = await _service.DeleteTaskAsync(id);
+
+        if (!deletedTask)
+            return NotFound("Nenhuma tarefa encontrada!");
+        
+        return NoContent();
+    }
 }

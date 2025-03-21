@@ -40,5 +40,16 @@ public class TaskRepository : ITaskRepository
     {
         return await _context.Tb_Tasks.ToListAsync();
     }
+
+    public async Task<TaskModel> GetTaskByIdAsync(int id)
+    {
+        return await _context.Tb_Tasks.FindAsync(id);
+    }
+
+    public async Task DeleteTaskAsync(TaskModel task)
+    {
+        _context.Tb_Tasks.Remove(task);
+        await _context.SaveChangesAsync();
+    }
     
 }
