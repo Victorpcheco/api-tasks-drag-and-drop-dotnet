@@ -9,4 +9,5 @@ public interface ITaskRepository
     Task<IEnumerable<TaskModel>> GetAllTaskAsync();
     Task<TaskModel> GetTaskByIdAsync(int id);
     Task DeleteTaskAsync(TaskModel task);
+    Task UpdateStatusAsync(TaskModel task);
 }

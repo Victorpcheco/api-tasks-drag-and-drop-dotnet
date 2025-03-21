@@ -9,5 +9,6 @@ public interface ITaskService
     Task<TaskModel?> UpdateTaskAsync(TaskModel task);
     Task <IEnumerable<TaskModel>> GetAllTaskAsync();
     Task<bool> DeleteTaskAsync(int id);
+    Task <bool> UpdateStatusAsync(int id, string status);
     
 }
