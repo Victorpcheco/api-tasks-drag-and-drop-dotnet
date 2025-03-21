@@ -56,5 +56,16 @@ public class TaskService : ITaskService
         await _repository.DeleteTaskAsync(task);
         return true;
     }
+
+    public async Task<bool> UpdateStatusAsync(int id, string status)
+    {
+        var task = await _repository.GetTaskByIdAsync(id);
+        if (task == null)
+            return false; 
+        
+        task.Status = status;
+        await _repository.UpdateTaskAsync(task);
+        return true;
+    }
     
 }

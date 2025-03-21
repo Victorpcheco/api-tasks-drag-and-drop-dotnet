@@ -1,3 +1,4 @@
+using Api.Dto;
 using Api.Models;
 using Api.Services;
 using Api.Validators;
@@ -72,6 +73,24 @@ public class TaskController : ControllerBase
         var deletedTask = await _service.DeleteTaskAsync(id);
 
         if (!deletedTask)
+            return NotFound("Nenhuma tarefa encontrada!");
+        
+        return NoContent();
+    }
+
+    [HttpPatch("{id}/status")]
+    public async Task<IActionResult> UpdateStatusAsync(int id, [FromBody] UpdateTaskDto dto)
+    {
+        var validator = new UpdateTaskStatusValidator();
+        var validationResult = validator.Validate(dto);
+        
+        if (!validationResult.IsValid)
+            return BadRequest(validationResult.Errors.Select(e => e.ErrorMessage));
+        
+        
+        var updated = await _service.UpdateStatusAsync(id, dto.Status);
+        
+        if  (!updated)
             return NotFound("Nenhuma tarefa encontrada!");
         
         return NoContent();

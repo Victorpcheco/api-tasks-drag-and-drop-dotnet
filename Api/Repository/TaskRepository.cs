@@ -51,5 +51,11 @@ public class TaskRepository : ITaskRepository
         _context.Tb_Tasks.Remove(task);
         await _context.SaveChangesAsync();
     }
+
+    public async Task UpdateStatusAsync(TaskModel task)
+    {
+        _context.Tb_Tasks.Update(task);
+        await _context.SaveChangesAsync();
+    }
     
 }
